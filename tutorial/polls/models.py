@@ -1,5 +1,7 @@
-from django.db import models
+from datetime import timedelta
 
+from django.db import models
+from django.utils import timezone
 
 class Question(models.Model):
     title = models.CharField(max_length=50)
@@ -7,6 +9,14 @@ class Question(models.Model):
 
     def __str__(self):
         return f'설문조사 ({self.title})'
+
+    @property
+    def is_recently(self):
+        published_date = self.published_date
+        if published_date == None:
+            return False
+        td = timezone.now - self.published_date
+        return td < timedelta(days=7)
 
 
 class Choice(models.Model):
