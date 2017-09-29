@@ -1,10 +1,18 @@
+{% extends 'base.html' %}
 
 {% block content %}
 <div>
-    <table>
+    <table class="table table-stripped table-bordered">
+        <tbody>
         {% for question in questions %}
-        <tr>{{ question.title }}</tr>
+        <tr>
+            <td><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></td>
+        </tr>
         {% endfor %}
+        </tbody>
     </table>
 </div>
 {% endblock %}
+
+
+

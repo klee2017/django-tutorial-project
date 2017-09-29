@@ -1,6 +1,8 @@
 import os
 import re
-from email import mime
+from mimetypes import MimeTypes
+
+mime = MimeTypes()
 
 from django.conf import settings
 from django.http import FileResponse, HttpResponse

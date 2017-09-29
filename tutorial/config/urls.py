@@ -17,11 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from .views import static_file
-from polls.views import index, question_detail
+from polls.views import index, question_detail, vote
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^$', index, name='index'),
     url(r'^static/', static_file),
-    url(r'^polls/(?P<pk>\d+)/$', question_detail)
+    url(r'^polls/(?P<pk>\d+)/vote/$', vote, name='vote'),
+    url(r'^polls/(?P<pk>\d+)/$', question_detail, name='question_detail'),
 ]

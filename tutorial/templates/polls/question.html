@@ -1,5 +1,18 @@
+{% extends 'base.html' %}
+
 {% block content %}
 <div>
     {{ question.title }}
+
+    <form action="{% url 'vote' pk=question.pk %}" method="POST">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+        <div>
+            <input type="radio" name="choice_pk" value="{{ choice.pk }}">
+            {{ choice.title }}: {{ choice.votes }}
+        </div>
+        {% endfor %}
+        <button>투표하기</button>
+    </form>
 </div>
 {% endblock %}
