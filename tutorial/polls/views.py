@@ -9,3 +9,9 @@ def index(request):
         'questions': questions,
     }
     return render(request, 'polls/index.html', context)
+
+def question_detail(request, pk):
+    context = {
+        'question':Question.objects.get(pk=pk)
+    }
+    return render(request, 'polls/question.html', context)
