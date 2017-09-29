@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.db import models
 from django.utils import timezone
 
+
 class Question(models.Model):
     title = models.CharField(max_length=50)
     published_date = models.DateTimeField(blank=True, null=True)
